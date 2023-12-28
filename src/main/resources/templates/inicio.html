@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/estilo/inicio.css" th:href="@{/estilo/inicio.css}">
+    <title>Inicio</title>
+</head>
+<body>
+    <main>
+        <h1>Bienvenido a tu lista de tareas</h1>
+        <section>
+            <h2>
+                Iniciar sesión
+            </h2>
+            <form id="form-ingresar" action="#" th:action="@{/iniciarSesion}" method="post" th:object="${usuario}">
+                <div class="cont-seccion-formulario">
+                    <div class="cont-informacion">
+                        <label for="nombre">Nombre:</label>
+                        <input placeholder="Nombre del usuario" type="text" 
+                               name="nombre" th:field="*{nombre}"/>
+                    </div>
+                    <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">
+                        Error en nombre
+                    </span>
+                </div>
+                <div class="cont-seccion-formulario">
+                    <div class="cont-informacion">
+                        <label for="contrasenia">Contrasenia:</label>
+                        <input placeholder="Contrasenia" type="password" name="contrasenia" th:field="*{contrasenia}"/>
+                    </div>
+                    <span th:if="${#fields.hasErrors('contrasenia')}" th:errors="*{contrasenia}">
+                        Error en Contrasenia
+                    </span>
+                </div>
+                <button type="submit" name="iniciar sesion">
+                    Iniciar Sesion
+                </button>
+            </form>
+            <p class="advertencia">
+                No tienes una cuenta?
+                <a th:href="@{/registrarse}">Create una cuenta</a>
+            </p>
+        </section>
+    </main>
+</body>
+</html>

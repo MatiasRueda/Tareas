@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/estilo/registro.css" th:href="@{/estilo/registro.css}">
+    <title>Registro</title>
+</head>
+<body>
+    <header>
+        <a th:href="@{/}" class="atras" th:text="${atras}">Volver</a>
+        <h1 class="cont-titulo">Registro</h1>
+    </header>
+    <main>
+        <form id="form-registro" action="#" th:action="@{/agregarUsuario}" method="post" th:object="${usuario}">
+            <div class="cont-seccion-formulario">
+                <div class="cont-informacion">
+                    <label for="nombre">Nombre:</label>
+                    <input placeholder="Nombre del usuario" type="text" name="nombre" th:field="*{nombre}"/>
+                </div>
+                <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">
+                    Error en nombre
+                </span>
+            </div>
+
+            <div class="cont-seccion-formulario">
+                <div class="cont-informacion">
+                    <label for="email">Email:</label>
+                    <input placeholder="Email del usuario" type="text" name="email" th:field="*{email}"/>
+                </div>
+                <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">
+                    Error en email
+                </span>
+            </div>
+
+            <div class="cont-seccion-formulario">
+                <div class="cont-informacion">
+                    <label for="DNI">DNI:</label>
+                    <input placeholder="DNI del usuario" type="text" name="DNI" th:field="*{DNI}"/>
+                </div>
+                <span th:if="${#fields.hasErrors('DNI')}" th:errors="*{DNI}">
+                    Error en DNI
+                </span>
+            </div>
+
+            <div class="cont-seccion-formulario">
+                <div class="cont-informacion">
+                    <label for="contrasenia">Contrasenia:</label>
+                    <input placeholder="Contrasenia del usuario" type="password" name="contrasenia" th:field="*{contrasenia}"/>
+                </div>
+                <span th:if="${#fields.hasErrors('contrasenia')}" th:errors="*{contrasenia}">
+                    Error en contrasenia
+                </span>
+            </div>
+            <button type="submit" name="registrarse">Registrarse</button>
+        </form>
+    </main>
+</body>
+</html>

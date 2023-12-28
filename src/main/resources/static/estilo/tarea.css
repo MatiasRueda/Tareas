@@ -1,0 +1,288 @@
+body {
+    margin: 0 auto;
+    height: 100vh;
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    height: 8rem;
+    border-bottom: 0.2rem solid black;
+    display: flex;
+    align-items: center;
+}
+
+main {
+    width: 100%;
+    padding-bottom: 7rem;
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.atras {
+    height: 3rem;
+    width: 3rem;
+    border: 0.15rem solid black;
+    color: black;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.atras:hover {
+    color: white;
+    background-color: black;
+}
+
+.cont-titulo , .cont-subtitulo {
+    width: 100%;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+}
+
+.cont-subtitulo {
+    font-size: 2em;
+}
+
+.cont-informacion-lista {
+    width: 96%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tareas {
+    width: 55%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: center;
+}
+
+.cont-tareas {
+    height: 25rem;
+    width: 100%;    
+    display: flex;
+    flex-direction: column;
+}
+
+.cont-informacion-lista h5 {
+    font-size: 1.3em;
+}
+
+.cont-lista-tareas {
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-gutter: stable both-edges;
+}
+
+.cont-tarea {
+    width: 97%;
+    min-height: 5rem;
+    margin-bottom: 1rem;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+}
+
+.cont-tarea p {
+    font-size: 1.2em;
+}
+
+#actualizar, #eliminar {
+    height: 2rem;
+    width: 2rem;
+    border: 0.1rem solid black;
+    text-decoration: none;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#actualizar:hover {
+    color: white;
+    background-color: green;
+}
+
+#eliminar:hover {
+    color: white;
+    background-color: red;
+}
+
+#nombre-tarea, #descripcion-tarea, #actualizar-tarea, #borrar-tarea{
+    text-align: center;
+}
+
+#nombre-tarea {
+    width: 20%;
+}
+
+#descripcion-tarea {
+    width: 60%;
+}
+
+#actualizar-tarea, #borrar-tarea {
+    width: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.agregar-tarea {
+    width: 40%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: center;
+}
+
+.agregar-tarea h1 {
+    width: 100%;
+}
+
+#form-tarea {
+    padding-top: 1rem;
+    height: 28rem;
+    width: 25rem;
+    border: 1px solid black;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.opciones {
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#form-tarea button {
+    margin-top: 2.5rem;
+    height: 4rem;
+    width: 8rem;
+    font-size: 1.2em;
+    cursor: pointer;
+    border: 0.1rem solid black;
+    background-color: white;
+}
+
+#form-tarea button:hover {
+    color: white;
+    background-color: black;
+}
+
+.cont-seccion-formulario {
+    height: 6rem;
+    width: 100%;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: start;
+    align-items: center;
+    justify-content: center;
+}
+
+.cont-informacion {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.cont-seccion-formulario label {
+    width: 100%;
+    font-size: 1.2em;
+    text-align: center;
+}
+
+#nombre {
+    padding-left: 0.5rem;
+    font-size: 1.2rem;
+    width: 15rem;
+}
+#descripcion {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    height: 3rem;
+    width: 15rem;
+    font-size: 1.2em;
+    font-family: inherit;
+    resize: none;
+}
+
+.cont-seccion-formulario p {
+    margin: 0;
+    padding: 0;
+}
+
+@media (width: 1280px) {
+    .cont-informacion-lista {
+        margin-left: 0rem;
+        width: 97%;
+    }
+    main {
+        padding-bottom: 0rem;
+    }
+}
+
+@media (max-width: 1279px) and (min-width: 1000px) {
+    body {
+        width: 90%;
+    }
+    
+    main {
+        padding-bottom: 0rem;
+    }
+
+    #form-tarea {
+        padding-top: 0rem;
+        height: 22rem;
+        width: 25rem;
+    }
+
+    #form-tarea button {
+        margin-top: 1rem;
+    }
+}
+
+@media (max-width: 999px) {
+
+    body {
+        width: 90%;
+    }
+    
+    main {
+        padding-bottom: 0rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .tareas {
+        width: 100%;
+    }
+
+    .agregar-tarea {
+        width: 100%;
+    }
+
+    #form-tarea {
+        height: 23rem;
+        width: 25rem;
+        margin-bottom: 3rem;
+    }
+
+    #form-tarea button {
+        margin-top: 1rem;
+    }
+
+}

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/estilo/tarea.css" th:href="@{/estilo/tarea.css}">
+    <title>Tareas</title>
+</head>
+<body>
+    <header>
+        <a th:href="@{/atras}" class="atras" th:text="${atras}"></a>
+        <h1 th:text="${saludo}"class="cont-titulo"></h1>
+    </header>
+    <main>
+        <section class="tareas" th:if="${tareas != null and !tareas.empty }">
+            <h2 class="cont-subtitulo">
+                Lista de tareas
+            </h2>
+            <div class="cont-tareas">
+                <div class="cont-informacion-lista">
+                    <h5 id="nombre-tarea" >Nombre: </h5>
+                    <h5 id="descripcion-tarea" >Descripcion: </h5>
+                    <h5 id="actualizar-tarea" >Act: </h5>
+                    <h5 id="borrar-tarea" >Bor: </h5>
+                </div>
+                <div class="cont-lista-tareas">
+                    <div class="cont-tarea" th:each="tarea : ${tareas}">
+                        <p id="nombre-tarea" th:text="${tarea.nombre}"></p>
+                        <p id="descripcion-tarea" th:text="${tarea.descripcion}"></p>
+                        <div id="actualizar-tarea">
+                            <a id="actualizar" th:href="@{/actualizar/} + ${tarea.id}">
+                                A
+                            </a>
+                        </div>
+                        <div id="borrar-tarea">
+                            <a id="eliminar" th:href="@{/borrar/} + ${tarea.id}">
+                                X
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="tareas" th:if="${tareas == null or tareas.empty}">
+            <h1>No hay tareas</h1>
+        </section>
+        <section class="agregar-tarea">
+            <h2 class="cont-subtitulo" th:text="${accion}">
+            </h2>
+            <form th:action="@{/guardar}" method="post" 
+                  th:object="${tarea}" id="form-tarea">
+                <div class="cont-seccion-formulario">
+                    <div class="cont-informacion">
+                        <label for="nombre">Nombre:</label>
+                        <input placeholder="Nombre de la tarea" 
+                            type="text" id="nombre"
+                            th:name="nombre" th:value="${nombre}">
+                    </div>
+                    <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">
+                        Error nombre
+                    </span>
+                    <p th:if="${errorNombre}">
+                        no debe estar vacio
+                    </p>
+                    <p th:if="${errorNombreSize}">            
+                        el tamaño debe estar entre 1 y 20
+                    </p>
+                </div>
+                <div class="cont-seccion-formulario">
+                    <div class="cont-informacion">
+                        <label for="descripcion">Descripcion:</label>
+                        <textarea placeholder="Descripcion de la tarea" 
+                                type="text" th:text="${descripcion}"
+                                th:name="descripcion" id="descripcion">
+                        </textarea>
+                    </div>
+                    <span th:if="${#fields.hasErrors('descripcion')}"
+                          th:errors="*{descripcion}">
+                        Error descripcion
+                    </span>
+                    <p th:if="${errorDescripcion}">
+                        no debe estar vacio
+                    </p>
+                    <p th:if="${errorDescripcionSize}">            
+                        el tamaño debe estar entre 1 y 55
+                    </p>
+                </div>
+                <div class="opciones">
+                    <button type="submit" name="guardar" th:text="${accion}">
+                    </button>
+                    <button th:if="${actualizar}" th:action="@{/agregarTarea}" >
+                        Volver
+                    </button>
+                </div>
+            </form>
+        </section>
+    </main>
+</body>
+</html>
